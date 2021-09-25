@@ -37,7 +37,6 @@ CREATE TABLE public.orders
     date timestamp without time zone DEFAULT CURRENT_DATE NOT NULL,
     amount real,
     total integer,
-    ref "character varying(100)",
     payment_method payment,
     PRIMARY KEY (order_id)
 );
