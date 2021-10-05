@@ -1,10 +1,12 @@
 const pool = require("../config");
+const logger = require('../winston');
 const productService = require("../services/product.service");
 
 const getAllProducts = async (req, res) => {
   const { page = 1 } = req.query;
-
+  logger.info(`Get all products for page: ${page}`);
   const products = await productService.getAllProducts(page);
+  logger.info(`Found ${products.length} products`);
   res.json(products);
 };
 
@@ -14,11 +16,13 @@ const createProduct = async (req, res) => {
 };
 
 const getProduct = async (req, res) => {
+  logger.info(`Getting product information`, req.params);
   const product = await productService.getProductById(req.params);
   res.status(200).json(product);
 };
 
 const getProductByName = async (req, res) => {
+  logger.info(`Getting product by name`, req.params);
   const product = await productService.getProductByName(req.params);
   res.status(200).json(product);
 };
