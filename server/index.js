@@ -2,7 +2,7 @@ require('newrelic');
 require("dotenv").config({ path: __dirname + "/.env" });
 const http = require("http");
 const app = require("./app");
-const { logger } = require("./utils/logger");
+const logger = require('./winston');
 
 const server = http.createServer(app);
 

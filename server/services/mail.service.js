@@ -1,6 +1,6 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
-const { logger } = require("../utils/logger");
+const logger = require('../winston');
 const { ErrorHandler } = require("../helpers/error");
 const html = require("../helpers/signup");
 

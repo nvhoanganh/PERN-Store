@@ -20,8 +20,8 @@ const mail = require("./mail.service");
 const { OAuth2Client } = require("google-auth-library");
 const crypto = require("crypto");
 const moment = require("moment");
-const { logger } = require("../utils/logger");
 let curDate = moment().format();
+const logger = require('../winston');
 
 class AuthService {
   async signUp(user) {
@@ -177,6 +177,7 @@ class AuthService {
         throw new ErrorHandler(error.statusCode, error.message);
       }
     } catch (error) {
+      logger.fatal(`Error occured: error message: ${error.message}`, error);
       throw new ErrorHandler(401, error.message);
     }
   }

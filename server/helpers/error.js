@@ -1,4 +1,5 @@
-const { logger } = require("../utils/logger");
+const logger = require('../winston');
+
 class ErrorHandler extends Error {
   constructor(statusCode, message) {
     super();

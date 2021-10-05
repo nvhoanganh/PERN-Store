@@ -1,10 +1,12 @@
 const cartService = require("../services/cart.service");
+const logger = require('../winston');
 
 const getCart = async (req, res) => {
   const userId = req.user.id;
-
+  logger.info(`Getting current cart for user`, req.user);
   // get cart items
   const cart = await cartService.getCart(userId);
+  logger.info(`There are ${cart.length} items in the cart for user`);
   res.json({ items: cart });
 };
 

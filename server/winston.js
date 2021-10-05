@@ -4,10 +4,13 @@ const { combine, timestamp, label, printf } = format;
 const appRoot = require('app-root-path');
 
 const logger = createLogger({
-	level: 'info',
+	level: 'debug',
 	format: format.combine(newrelicFormatter()),
 	defaultMeta: { service: 'backend-api' },
 	transports: [
+		new transports.Console({
+			format: format.simple(),
+		}),
 		new transports.File({
 			filename: `logs/api.log`,
 			maxFiles: 5,
