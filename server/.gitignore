@@ -4,3 +4,4 @@ node_modules
 request.http
 *.rest
 newrelic_agent.log
+logs
